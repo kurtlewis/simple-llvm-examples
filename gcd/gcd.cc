@@ -69,6 +69,8 @@ Module * makeLLVMMOdule() {
   Value * xLessThanY = builder.CreateICmpULT(x, y, "tmp");
   builder.CreateCondBr(xLessThanY, cond_true, cond_false_2);
 
+  // Concerned with CreateCall and LLVM-3.8
+
   // Last two blocks are similar, they both contian recursive calls albeit w/ dif. params
   // A vector is used to hold args. for a call instruction
   builder.SetInsertPoint(cond_true);
@@ -88,8 +90,4 @@ Module * makeLLVMMOdule() {
   builder.CreateRet(recur_2);
 
   return mod;
-
-
-
-
 }
