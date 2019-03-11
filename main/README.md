@@ -2,6 +2,13 @@
 This example shows how to make a rudimentary main function, which returns
 an exit code of 15.
 
+This builds IR for the following C code:
+```
+int main() {
+  return 15;
+}
+```
+
 # Compiling
 See the `Makefile` for compiling instructions. Run with `$ make` or
 `$ make llvm-main`.

@@ -4,6 +4,13 @@ compile with LLVM 3.8.
 
 http://releases.llvm.org/2.6/docs/tutorial/JITTutorial1.html
 
+This file compiles this C code:
+```
+int mul_add(int x, int y, int z) {
+  return x * y + z;
+}
+```
+
 # Compiling
 Compile via `make` with `$ make`.
 
