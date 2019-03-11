@@ -1,6 +1,6 @@
 # Main example
-This example shows how to make a rudimentary main function, which returns
-an exit code of 15.
+This example elaborates on the previous two examples by showing an implementation of 
+a recursive greatest common denominator (gcd) function. 
 
 This builds IR for the following C code:
 ```
@@ -8,7 +8,7 @@ unsigned gcd(unsigned x, unsigned y) {
   if (x == y) {
     return x;
   } else if (x < y) {
-    return (gcd x, y - x);
+    return gcd(x, y - x);
   } else {
     return gcd(x-y, y);
   }
