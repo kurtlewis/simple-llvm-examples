@@ -41,9 +41,9 @@ Module * makeLLVMMOdule() {
 
   // Add arguments to a function
   Function::arg_iterator args = gcd->arg_begin();
-  Value * x = args++;
+  Value * x = &*args++;
   x->setName("x");
-  Value * y = args++;
+  Value * y = &*args++;
   y->setName("y");
 
   // Blocks correspond to nodes in "tree" of program execution
@@ -78,7 +78,8 @@ Module * makeLLVMMOdule() {
   std::vector<Value *> args1;
   args1.push_back(x);
   args1.push_back(yMinusX);
-  Value * recur_1 = builder.CreateCall(gcd, args1.begin(), args1.end(), "tmp");
+  //Value * recur_1 = builder.CreateCall(gcd, args1.begin(), args1.end(), "tmp");
+  Value * recur_1 = builder.CreateCall(gcd, args1, "tmp");
   builder.CreateRet(recur_1);
 
   builder.SetInsertPoint(cond_false_2);
@@ -86,7 +87,8 @@ Module * makeLLVMMOdule() {
   std::vector<Value *> args2;
   args2.push_back(xMinusY);
   args2.push_back(y);
-  Value * recur_2 = builder.CreateCall(gcd, args2.begin(), args2.end(), "tmp");
+  //Value * recur_2 = builder.CreateCall(gcd, args2.begin(), args2.end(), "tmp");
+  Value * recur_2 = builder.CreateCall(gcd, args2, "tmp");
   builder.CreateRet(recur_2);
 
   return mod;
